@@ -12,4 +12,35 @@ const navBarFunction = () => {
   }
 };
 
+/* 
+function when scrolling in the window at certain postion for each section
+it adds the 'your-active-class' to the class list of that section
+and when scrolling and passing the section it removes the class from the class list
+//  */
+
+window.onscroll = () => {
+  Array.from(sections).forEach((section) => {
+    section.getBoundingClientRect().top <= 200 &&
+    section.getBoundingClientRect().top >= -300
+      ? section.classList.add("your-active-class")
+      : section.classList.remove("your-active-class");
+  });
+};
+
+/**
+ * this function using onclick event to listen on the navbar on clicking,
+ * after clicking on the nav item it prevent it default event and not scrolling
+ * the it checks if the target list item of data set (declared before using id of the section)
+ * if it exists then we select it and using the scrollIntoView method it set its scrolling
+ * behaviour to smooth
+ */
+navBarList.onclick = (listItem) => {
+  listItem.preventDefault();
+  if (listItem.target.dataset.nav) {
+    document
+      .getElementById(`${listItem.target.dataset.nav}`)
+      .scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 navBarFunction();
