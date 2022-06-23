@@ -9,7 +9,9 @@ let sectionsArray = document.getElementsByTagName("section");
     navLink.classList.add("menu__link");
     navLink.setAttribute("href", `#${sectionsArray[i].id}`);
     navLink.innerHTML = sectionsArray[i].id;
-    navBarList.appendChild(navLink);
+    let listItem = document.createElement("li");
+    listItem.appendChild(navLink);
+    navBarList.appendChild(listItem);
   }
 })();
 
